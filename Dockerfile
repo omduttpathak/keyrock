@@ -134,26 +134,33 @@ RUN apt-get update && \
 #RUN apt-get update 
 #RUN apt-get install -y  --no-install-recommends unzip 
 #    wget --no-check-certificate -O source.zip https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/archive/${RELEASE}.zip && \
-RUN git clone http://fiware-csp-user:password@192.168.100.178/csp_containerizationandautomation/keyrock.git
-#    unzip source.zip && \
-    #unzip FIWARE_7.7.zip && \
-RUN mv keyrock /opt/fiware-idm 
+
+COPY ./* /opt/fiware-idm
+
+WORKDIR /opt/fiware-idm
+
+#RUN git clone http://fiware-csp-user:password@192.168.100.178/csp_containerizationandautomation/keyrock.git
+
+# RUN unzip FIWARE_7.7.zip
+
+#RUN mv keyrock /opt/fiware-idm 
 #    mv ${GITHUB_REPOSITORY}-${RELEASE} /opt/fiware-idm 
-RUN apt-get clean 
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#RUN apt-get clean 
+#RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
     
-##RUN apt-get update && \
-##   apt-get install -y  --no-install-recommends unzip && \
+RUN apt-get update && \
+    apt-get install -y  --no-install-recommends unzip && \
 #    wget --no-check-certificate -O source.zip https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/archive/${RELEASE}.zip && \
 ##    wget https://github.com/prabhat2410/keyrock.git && \
 #    unzip source.zip && \
-    #unzip FIWARE_7.7.zip && \
+    unzip FIWARE_7.7.zip && \
 ##    mv keyrock /opt/fiware-idm && \
 #    mv ${GITHUB_REPOSITORY}-${RELEASE} /opt/fiware-idm && \
-##    apt-get clean && \
+    apt-get clean && \
+    apt-get remove -y unzip 
 ##    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-WORKDIR /opt/fiware-idm
+WORKDIR /opt/fiware-idm/fiware-idm-FIWARE_7.7
 
 RUN rm -rf doc extras  && \
     npm cache clean -f   && \
@@ -175,17 +182,17 @@ RUN rm -rf doc extras  && \
 
 
 # Copy config database file
-COPY /extras/docker/config_database.js extras/docker/config_database.js
+#COPY /extras/docker/config_database.js extras/docker/config_database.js
 # Copy config file
 #COPY config.js.template config.js
-COPY /extras/docker/config.js.template config.js
+RUN mv extras/docker/config.js.template config.js
 
 # Run Idm Keyrock
-COPY /extras/docker/docker-entrypoint.sh /opt/fiware-idm/docker-entrypoint.sh
+RUN cp extras/docker/docker-entrypoint.sh /opt/fiware-idm/fiware-idm-FIWARE_7.7/docker-entrypoint.sh
 #RUN chmod 755 /opt/fiware-idm/extras/docker/docker-entrypoint.sh
 RUN chmod 755 docker-entrypoint.sh
 
-ENTRYPOINT ["/opt/fiware-idm/docker-entrypoint.sh"]
+ENTRYPOINT ["/opt/fiware-idm/fiware-idm-FIWARE_7.7/docker-entrypoint.sh"]
 
 # Ports used by idm
 EXPOSE ${IDM_PORT}
