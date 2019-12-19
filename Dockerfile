@@ -135,10 +135,10 @@ RUN apt-get update && \
 #RUN apt-get install -y  --no-install-recommends unzip 
 #    wget --no-check-certificate -O source.zip https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/archive/${RELEASE}.zip && \
 
-COPY ./* /opt/fiware-idm
+
 
 WORKDIR /opt/fiware-idm
-
+COPY ./* /opt/fiware-idm
 #RUN git clone http://fiware-csp-user:password@192.168.100.178/csp_containerizationandautomation/keyrock.git
 
 # RUN unzip FIWARE_7.7.zip
