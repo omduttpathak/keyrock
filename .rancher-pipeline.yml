@@ -2,7 +2,7 @@ stages:
 - name: Build
   steps:
   - publishImageConfig:
-      dockerfilePath: extras/docker/Dockerfile
+      dockerfilePath: Dockerfile
       buildContext: .
       tag: fiware-idm:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
