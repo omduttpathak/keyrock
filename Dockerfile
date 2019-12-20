@@ -138,7 +138,7 @@ RUN apt-get update && \
 
 
 WORKDIR /opt/fiware-idm
-COPY ./* /opt/fiware-idm
+COPY ./* /opt/fiware-idm/
 #RUN git clone http://fiware-csp-user:password@192.168.100.178/csp_containerizationandautomation/keyrock.git
 
 # RUN unzip FIWARE_7.7.zip
