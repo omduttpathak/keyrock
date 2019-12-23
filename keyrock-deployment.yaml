@@ -40,7 +40,7 @@ spec:
           value: http://localhost:3000
         - name: IDM_PORT
           value: "3000"
-        image: csp2-centos-1:5000/fiware-idm:${CICD_EXECUTION_SEQUENCE}
+        image: csp2-centos-1:5000/IMG_fiware-keyrock_v7.7:${CICD_EXECUTION_SEQUENCE}
         name: keyrock
         ports:
         - containerPort: 3000
