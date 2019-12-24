@@ -189,7 +189,8 @@ COPY config.js.template config.js
 
 # Run Idm Keyrock
 #RUN cp extras/docker/docker-entrypoint.sh /opt/fiware-idm/fiware-idm-FIWARE_7.7/docker-entrypoint.sh
-RUN cp docker-entrypoint.sh /opt/fiware-idm/fiware-idm-FIWARE_7.7/docker-entrypoint.sh
+#RUN cp docker-entrypoint.sh /opt/fiware-idm/fiware-idm-FIWARE_7.7/docker-entrypoint.sh
+COPY docker-entrypoint.sh /opt/fiware-idm/fiware-idm-FIWARE_7.7/docker-entrypoint.sh
 
 #RUN chmod 755 /opt/fiware-idm/extras/docker/docker-entrypoint.sh
 RUN chmod 755 docker-entrypoint.sh
