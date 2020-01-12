@@ -1,6 +1,7 @@
 ﻿apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
+  namespace: fiware
   annotations:
     field.cattle.io/creatorId: user-g2sjq
     field.cattle.io/ingressState: '{"a2V5cm9jay9maXdhcmUveGlwLmlvLy8vMzAwMA==":""}'
