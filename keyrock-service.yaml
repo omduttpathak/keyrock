@@ -1,7 +1,8 @@
 ﻿apiVersion: v1
 kind: Service
 metadata:
-  namespace: fiware
+  #namespace: fiware
+  namespace: test
   #annotations:
    # field.cattle.io/creatorId: user-g2sjq
    # field.cattle.io/ipAddresses: "null"
