@@ -6,7 +6,6 @@ stages:
       buildContext: .
       tag: img_fiware-keyrock_v7.7.tar.gz :${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
-      #registry: 10.0.8.61:31484
       registry: 172.30.76.49:5000
     env:
       PLUGIN_DEBUG: "true"
@@ -29,8 +28,13 @@ stages:
         apt-get install sshpass
         sshpass -p password ssh -tt -o StrictHostKeyChecking=no newuser@192.168.100.178 ./check_pod_status.sh p-kpggk-pipeline keyrock
     when:
-      branch: {}
-      event: {}
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
   when:
     event: {}
 - name: test
