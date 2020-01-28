@@ -4,8 +4,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: Dockerfile
       buildContext: .
-      #tag: img_fiware-keyrock_v7.7.tar.gz :${CICD_EXECUTION_SEQUENCE}
-      tag: 172.30.76.49:5000/keyrock 
+      tag: 172.30.76.49:5000/keyrock
       pushRemote: true
       registry: 172.30.76.49:5000
     env:
@@ -37,7 +36,11 @@ stages:
         - pull_request
         - push
   when:
-    event: {}
+    event:
+      include:
+      - pull_request
+      - push
+      - tag
 - name: test
   steps:
   - runScriptConfig:
