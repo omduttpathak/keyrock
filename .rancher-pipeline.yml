@@ -54,6 +54,10 @@ stages:
         newman run ./KeyRock.postman_collection.json
   when:
     branch: {}
-    event: {}
+    event:
+      include:
+      - pull_request
+      - push
+      - tag
 timeout: 300
 notification: {}
