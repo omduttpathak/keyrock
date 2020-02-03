@@ -12,13 +12,8 @@ stages:
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
   when:
     event: {}
 - name: Deploy
@@ -34,13 +29,8 @@ stages:
         apt-get install sshpass
         sshpass -p password ssh -tt -o StrictHostKeyChecking=no newuser@192.168.100.178 ./check_pod_status.sh p-kpggk-pipeline keyrock
     when:
-      branch:
-        include:
-        - master
-      event:
-        include:
-        - pull_request
-        - push
+      branch: {}
+      event: {}
   when:
     event:
       include:
