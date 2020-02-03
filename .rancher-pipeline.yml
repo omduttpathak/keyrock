@@ -4,9 +4,11 @@ stages:
   - publishImageConfig:
       dockerfilePath: Dockerfile
       buildContext: .
-      tag: 172.30.76.49:5000/keyrock
+      tag: csp2-centos-1:5000/fiware-keyrock 
+      #tag: 172.30.76.49:5000/keyrock
       pushRemote: true
-      registry: 172.30.76.49:5000
+      registry: csp2-centos-1:5000
+      #registry: 172.30.76.49:5000
     env:
       PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"
