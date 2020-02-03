@@ -1,8 +1,8 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  #namespace: fiware
-  namespace: test
+  namespace: fiware
+  #namespace: test
   annotations:
     kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.7.0 (HEAD)
@@ -43,7 +43,7 @@ spec:
         - name: IDM_PORT
           value: "3000"
         #image: csp2-centos-1:5000/img_fiware-keyrock_v7.7:${CICD_EXECUTION_SEQUENCE}
-        image: 172.30.76.49:5000/keyrock 
+        image: csp2-centos-1:5000/fiware-keyrock  
         name: keyrock
         ports:
         - containerPort: 3000
