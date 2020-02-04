@@ -19,9 +19,9 @@ stages:
 - name: Deploy
   steps:
   - applyYamlConfig:
-      path: extras/docker/keyrock-deployment.yaml
+      path: ./keyrock-deployment.yaml
   - applyYamlConfig:
-      path: extras/docker/keyrock-service.yaml
+      path: ./keyrock-service.yaml
   - runScriptConfig:
       image: python:latest
       shellScript: |-
