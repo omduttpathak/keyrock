@@ -32,11 +32,7 @@ stages:
       branch: {}
       event: {}
   when:
-    event:
-      include:
-      - pull_request
-      - push
-      - tag
+    event: {}
 - name: test
   steps:
   - runScriptConfig:
@@ -50,10 +46,6 @@ stages:
         newman run ./KeyRock.postman_collection.json
   when:
     branch: {}
-    event:
-      include:
-      - pull_request
-      - push
-      - tag
+    event: {}
 timeout: 300
 notification: {}
