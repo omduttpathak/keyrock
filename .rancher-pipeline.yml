@@ -45,7 +45,12 @@ stages:
         npm install -g newman
         newman run ./KeyRock.postman_collection.json
   when:
-    branch: {}
-    event: {}
+    branch:
+      include:
+      - master
+    event:
+      include:
+      - pull_request
+      - push
 timeout: 300
 notification: {}
